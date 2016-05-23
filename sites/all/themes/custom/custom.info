@@ -1,0 +1,16 @@
+name = Custom
+description = Custom is a customized Framework theme.
+core = 7.x
+engine = phptemplate
+stylesheets[all][] = style.css
+
+scripts[] = main.js
+
+regions[header]         = Header
+regions[navigation]     = Navigation
+regions[highlighted]    = Highlighted
+regions[content]        = Content
+regions[after_content]  = After content
+regions[inner_footer]   = Inner footer
+regions[footer]         = Footer
+

@@ -1,0 +1,556 @@
+/* Drupal 7 Framework - Created by André Griffin
+------------------------------------------------
+[Table of contents]
+
+ 0.Reset
+ 1.Global
+ 2.Layout
+ 3.Main
+ 4.Sidebars
+ 5.Header
+ 6.Navigation
+ 7.Nodes
+ 8.Comments
+ 9.Blocks
+10.Footer
+11.CSS Support
+
+Font sizes: 16px base font with 24px line-height
+------------------------------------------------
+       font-size / line-height / margin-top
+------------------------------------------------
+40px = 2.5em     / 1.2         / 0.6em
+32px = 2em       / 1.5         / 0.75em
+24px = 1.5em     / 1           / 1em
+20px = 1.25em    / 1.2         / 1.2em
+16px = 1em       / 1..5        / 1.5em
+14px = 0.875em   / 1.7143      / 1.7143em
+13px = 0.8125em  / 1.8462      / 1.8462em
+12px = 0.75em    / 2           / 2em
+10px = 0.625em   / 2.4         / 2.4em
+
+Equation for font sizing: 
+  Desired px ÷ Default (or parent) px = em size
+------------------------------------------------*/
+
+/**
+ * 0.RESET 
+ */
+
+@import "reset.css";
+
+/**
+ * 1.GLOBAL
+ */
+
+body {    
+    background: url('images/background.png') repeat-x center top #69523b;
+    color: #29371d;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}
+
+h1, .h1 {
+  font-size: 2em;
+  line-height: 1.5;
+  margin-top: 0.75em;
+}
+
+h2, .h2 {
+  font-size: 1.5em;
+  line-height: 1;
+  margin-top: 1em;
+}
+
+h3, .h3 {
+  font-size: 1.25em;
+  line-height: 1.2;
+  margin-top: 1.2em;
+}
+
+h1, h2, h3, h4, h5, h6, .h4, .h5, .h6 {
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.5;
+  margin-top: 1.5em;
+  font-family: 'Kite One', Arial, Helvetica, sans-serif;
+}
+
+p {
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 0 0 0.8em 0;
+}
+
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}
+
+a { color: #069; text-decoration: none; }
+
+a:visited { color: #309; }
+
+a:hover, a:active, li a.active  { color: #39f; }
+
+a:focus { outline: thin dotted; }
+
+a:hover, a:active { outline: 0; }
+
+/* apply common styling after reset.css */
+
+li ul, li ol {  margin: 0; }
+ul, ol {  margin: 0 1.5em 1.5em 0;  padding-left: 1.5em; }
+ul {  list-style-type: disc; }
+ol {  list-style-type: decimal; }
+dl {  margin: 0 0 1.5em 0; }
+dl dt {  font-weight: bold; }
+dd {  margin-left: 1.5em; }
+hr {  background: #666;  border: none;  clear: both;  float: none;  height: 1px;  margin: 0 0 1.4375em;  width: 100%; }
+fieldset {  border: 1px solid #ccc;  margin: 0 0 1.4375em;  padding: 1.5em; }
+table {  margin-bottom: 1.5em;  width: 100%; }
+th, tr, td {  vertical-align: middle; }
+th { padding-right: 1em; }
+.sticky-header th, .sticky-table th {  border-bottom: 3px solid #ccc;  padding-right: 1em;  text-align: left; }
+
+/**
+ * 2.LAYOUT
+ */
+ 
+#header {
+    width: 980px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#logo {
+    display: block;
+    float: left;
+    width: 425px;
+}
+
+#ostrich {
+    position: absolute;
+    width: 172px;
+    height: 280px;
+    top: 5px;
+    left: -100px;
+    background: url('images/ostrich.png') no-repeat;
+}
+
+div.region-header {
+    float: left;
+    width: 555px;
+    height: 150px;
+    position: relative;
+}
+
+#navigation {
+    clear: both;
+}
+
+#container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#highlighted {
+    position: relative;
+    z-index: 3;
+}
+
+#contentTop {
+    background: url(images/contentTop.png) no-repeat top;
+    height: 10px;
+    width: 988px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+#main {
+    background: url(images/contentBg.png) repeat-y top center;
+    padding: 10px 15px;
+    width: 978px;
+    margin: 0 auto;
+}
+
+#contentBottom {
+    background: url(images/contentBottom.png) no-repeat bottom;
+    height: 10px;
+    width: 988px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+#footer {
+    font-size: 12px;
+    color: #26120f;
+    margin: 5px auto;
+    width: 980px;
+}
+
+/* Menu */
+
+div.region-navigation {
+    padding-top: 20px;
+}
+
+#block-system-main-menu ul.menu {
+    margin: 0;
+    position: relative;
+    bottom: -5px;
+}
+
+#block-system-main-menu ul.menu li {
+    list-style: none;
+    display: inline;
+}
+
+#block-system-main-menu ul.menu a {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 15px;
+    color: #6b4916;
+    font-weight: bold;
+    border: 1px solid #e2ce8b;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background: #ECDEAD;
+    padding: 10px 22px 5px;
+    box-shadow:  0px -1px 5px 1px rgba(0, 0, 0, 0.3);
+}
+
+#block-system-main-menu ul.menu a:hover,
+#block-system-main-menu ul.menu a.active-trail {
+    background: #74A701;
+    border-color: #689600;
+    color: white;
+}
+
+/** Login block **/
+
+#block-block-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#block-block-1 div.content a {
+    display: block;
+    background: url("images/signInBg.png") no-repeat;
+    color: #E7DAAA;
+    height: 25px;
+    padding: 10px 5px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 102px;
+}
+
+/** Search block **/
+#block-search-form {
+    background: url("images/searchBg.png") no-repeat;
+    float: right;
+    height: 45px;
+    padding: 6px 20px;
+    width: 400px;
+}
+
+#block-search-form .form-item input {
+    border: 1px solid #B0C5A4;
+    float: left;
+    height: 27px;
+    padding: 5px;
+    width: 285px;
+}
+
+#block-search-form .form-actions input {
+    background: url("images/searchBtBg.png") no-repeat;
+    border: medium none;
+    color: #FFFFFF;
+    float: right;
+    height: 28px;
+    padding: 3px 15px 3px 3px;
+    text-transform: uppercase;
+    width: 97px;
+    cursor: pointer;
+}
+
+/** Highlight block - welcome block **/
+#block-block-2 {
+    background: url("images/welcomeTop.png") no-repeat;
+    margin: 0 auto;
+    padding-top: 7px;
+    width: 940px;
+}
+
+#block-block-2 div.content {
+    clear: both;
+    line-height: 20px;
+    margin: 0 auto;
+    padding: 5px 15px;
+    width: 910px;
+}
+
+#block-block-2 div.content, #block-block-2 h2 {
+    background: url("images/welcomeBg.png") repeat-y;
+}
+
+#block-block-2 h2 {
+    color: #6B4916;
+    font-size: 28px;
+    font-style: italic;
+    line-height: normal;
+    margin: 0;
+    padding: 10px;
+}
+
+/** Messages **/
+
+#main #messages {
+    position: relative;
+    z-index: 3;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/** Breafcrumbs **/
+
+#main .breadcrumb {
+    padding-left: 30px;
+    position: relative;
+    top: -5px;
+    z-index: 3;
+}
+
+/** Page body **/
+
+#page-title,
+#block-nodeblock-7 .block-title,
+#block-nodeblock-8 .block-title {
+    background: url("images/headingBg.png") no-repeat;
+    color: #F7EEE2;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: bold;
+    height: 25px;
+    margin: 15px -10px;
+    padding: 5px 30px;
+    position: relative;
+    z-index: 2;
+}
+
+#main > .content > .field-name-body {
+    padding: 10px;
+}
+
+/** After content blocks **/
+.node-block-header {
+    background: url("images/organicHolder.jpg") no-repeat center bottom;
+    float: left;
+    margin: 0 10px;
+    padding-bottom: 5px;
+    width: 468px;
+}
+
+.node-block-header div.content {
+    background: url("images/organicContent.jpg") repeat-y;
+    padding: 0 0 10px;
+}
+
+.node-block-header div.content div.field-name-field-image img {
+    border: 2px solid #453E2B;
+}
+
+.node-block-header .block-header-title {
+    color: #674512;
+    font-size: 20px;
+    margin: 10px 15px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Kite One', Arial, Helvetica, sans-serif;
+}
+
+.node-block-header div.content div.field-name-body {
+    color: #29371D;
+    font-size: 14px;
+    line-height: 19px;
+    margin: 0 12px;
+    text-align: justify;
+}
+
+.node-block-header div.content div.field-name-body p {
+    margin-bottom: 0;
+}
+
+#after-content .block-nodeblock {
+    float: left;
+    
+}
+
+.hr {
+    background: url("images/hr.jpg") repeat-x scroll left center transparent;
+    border: 0 none;
+    height: 2px;
+    margin: 20px 17px;
+}
+
+/** Block contact footer **/
+#inner-footer #block-block-3 .content {
+    background: #E4DBB2;
+    -webkit-box-shadow:  1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+    box-shadow:  1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+    font-size: 17px;
+    font-style: italic;
+    font-weight: bold;
+    margin: -10px 20px 10px 20px;
+    padding: 10px;
+    padding-top: 20px;
+}
+
+#inner-footer #block-block-3 h2.block-title {
+    background: url("images/contactHeading.png") no-repeat scroll left top transparent;
+    color: #F7EEE2;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: bold;
+    height: 25px;
+    margin-left: -8px;
+    padding: 5px 25px;
+    position: relative;
+    width: 149px;
+    z-index: 100;
+}
+
+img.image-rounded {
+    -webkit-border-radius: 500px;
+    border-radius: 500px;
+    border: 2px solid #69523B;
+}
+
+#main > .content .field-name-body img {
+    border: 1px solid #69523B;
+}
+
+#main > .content .field-name-body div.right-alignment {
+    float: right;
+    width: 620px;
+}
+
+#main > .content .field-name-body div.right-alignment h4:first-child {
+    margin-top: 0;
+}
+
+#main > .content .field-name-body img.left-image {
+    display: block;
+    float: left;
+    margin-right: 20px;
+}
+
+
+/** Page de contact **/
+
+#contact-site-form {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Bouton Plus d'info */
+a.more {
+    font-size: 14px;
+    line-height: 18px;
+    height: 18px;
+    display: block;
+    width: auto;
+    color: #fff;
+    border: 1px solid #829931;
+    background-color: #6B950E;
+    border-radius: 5px;
+    padding: 4px 8px 4px 8px;
+    margin-top: 10px;
+}
+
+a.more:hover {
+    background: #5A841A;
+}
+
+.node-block-header a.more {
+    width: 100px;
+    text-align: center;
+    margin: auto;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Bouton download */
+a.download {
+    font-size: 14px;
+    line-height: 18px;
+    height: 18px;
+    display: inline-block;
+    width: auto;
+    color: #6B4916;
+    border: 1px solid #e5d18d;
+    background-color: #ECDEAD;
+    border-radius: 5px;
+    padding: 4px 8px 4px 8px;
+    margin-top: 10px;
+}
+
+a.download:hover {
+    background: #74A701;
+    color: white;
+}
+
+
+/* List style */
+ul li {
+    list-style-image: url('images/arrow.png');
+    line-height: 16px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+/* Block footer */
+#block-block-4 a {
+    color: #26120F;
+    font-style: italic;
+}
+
+#block-block-4 a:hover {
+    text-decoration: underline;
+}
+
+/** Galeries **/
+.node-gallery .field-name-field-image-gallery .field-item {
+    float: left;
+    margin: 20px;
+}
+
+.node-gallery .field-name-field-image-gallery .field-item img {
+    border: 1px solid #69523B;
+}
+
+/**
+ * 11.CSS SUPPORT
+ *
+ * Built-in classes:
+ * .clearfix                            | contain floats
+ * .element-invisible                   | hide element visually
+ * .element-invisible.element-focusable | allow element to be focusable when navigated to via keyboard
+ * .element-hidden                      | hide visually and from screenreaders
+ */
+ 
+/* clear floats */
+.clear { clear: both; }
+
+/* display block */
+.display-block { display: block; }
