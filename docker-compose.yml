@@ -1,0 +1,26 @@
+version: '2'
+services:
+  # web container
+  web:
+    image: actency/docker-apache-php:7.0
+    ports:
+      - "80:80"
+      - "9000:9000"
+    links:
+      - database:mysql
+    tty: true
+    shm_size: 2G
+
+  # database container
+  database:
+    image: actency/docker-mysql:5.7
+    ports:
+      - "3306:3306"
+
+  # phpmyadmin container
+  phpmyadmin:
+    image: actency/docker-phpmyadmin
+    ports:
+      - "8010:80"
+    links:
+      - database:mysql

@@ -5,5 +5,9 @@ htdocs/sites/*/settings*.php
 htdocs/sites/*/files
 htdocs/sites/*/private
 
+# Environment specific + IDE
 .DS_Store
 .idea
+
+# Docker
+docker-compose.override.yml
